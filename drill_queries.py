@@ -1,9 +1,11 @@
 import sqlite3
 import sys
 import os
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-if ROOT not in sys.path:
-    sys.path.insert(0, ROOT)
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
+if parent_dir not in sys.path:
+    sys.path.insert(0, parent_dir)
 def top_departments(db_path):
     with sqlite3.connect(db_path) as conn:
         cursor = conn.cursor()
